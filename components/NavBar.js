@@ -54,7 +54,7 @@ const NavBar = () => {
                     <div className={'contact-section'}>
                         <h3>Need Help?</h3>
                         <p>Got Feedback or Suggestions?</p>
-                        <button onClick={''} type = "button" className = "btn btn-outline-secondary">Contact Us</button>
+                        <a href={'/contact-us'} type = "button" className = "btn btn-outline-secondary">Contact Us</a>
                     </div>
                 </div>
             </nav>
