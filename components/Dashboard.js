@@ -1,11 +1,22 @@
+import NavBar from "./NavBar";
 import Chart from "./Chart";
-import Values from "./Values";
 
 const DashBoard = () => {
     return (
-        <div style={{display: "flex", flexDirection: "column"}}>
+        <div className={'dashboard'}>
+            <NavBar />
             <Chart />
-            <Values />
+            <style jsx>{`
+                .dashboard {
+                    display: flex;
+                    flex-direction: column;
+                }
+                @media (min-width: 992px) {
+                    .dashboard {
+                        flex-direction: row;
+                    }
+                }
+            `}</style>
         </div>
     );
 }

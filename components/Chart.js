@@ -1,5 +1,6 @@
 import React from 'react'
 import { Line } from "react-chartjs-2";
+import Values from "./Values";
 
 const Chart = () => {
     return (
@@ -13,11 +14,12 @@ const Chart = () => {
                 <button type = "button" className = "btn btn-2">Clicks</button>
                 <p>Earnings are approximate and shown in USD</p>
             </div>
-            <div className = "card">
+            <div className = "card col-lg-9 col-xl-9">
                 <div className = "card-body">
                     <Line data={ChartData} />
                 </div>
             </div>
+            <Values />
             <style jsx>{`
                 .title-style {
                     margin-top: 0.5rem;   
@@ -44,6 +46,22 @@ const Chart = () => {
                     padding-left: 4rem;
                     text-align: right;
                     padding-top: 0.25rem;
+                }
+                @media (min-width: 992px) {
+                    .text-box {
+                        width: 68vw;
+                    }
+                    .card {
+                        width: 90vw
+                    }
+                }
+                @media (min-width: 1200px) {
+                    .text-box {
+                        width: 75vw;
+                    }
+                    .card {
+                        width: 100vw
+                    }
                 }
             `}</style>
         </section>
