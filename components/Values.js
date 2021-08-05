@@ -60,6 +60,7 @@ const Values = () => {
                     </div>
                 </div>
             </div>
+
             <style jsx>{`
                 .card-single {
                     margin: 1rem 1rem 0 0;

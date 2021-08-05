@@ -1,6 +1,7 @@
 import React from 'react'
-import { Line } from "react-chartjs-2";
 import Values from "./Values";
+import { Line } from "react-chartjs-2";
+import { CurrencyDollar, FileCheckFill } from "react-bootstrap-icons";
 
 const Chart = () => {
     return (
@@ -10,8 +11,8 @@ const Chart = () => {
                 <input className={"text-box"} type={"text"} />
             </div>
             <div className={'text-items'}>
-                <button type = "button" className = "btn btn-1">Earnings</button>
-                <button type = "button" className = "btn btn-2">Clicks</button>
+                <button type = "button" className = "btn btn-1">Earning<CurrencyDollar /></button>
+                <button type = "button" className = "btn btn-2">Clicks<FileCheckFill /></button>
                 <p>Earnings are approximate and shown in USD</p>
             </div>
             <div className = "card col-lg-9 col-xl-9">

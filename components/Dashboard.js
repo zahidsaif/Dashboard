@@ -1,23 +1,19 @@
 import NavBar from "./NavBar";
-import Chart from "./Chart";
+import Chart2 from "./Chart2";
 
 const DashBoard = () => {
     return (
-        <div className={'dashboard'}>
-            <NavBar />
-            <Chart />
-            <style jsx>{`
-                .dashboard {
-                    display: flex;
-                    flex-direction: column;
-                }
-                @media (min-width: 992px) {
-                    .dashboard {
-                        flex-direction: row;
-                    }
-                }
-            `}</style>
-        </div>
+        <section className={"container-fluid"} style={{marginLeft: '-1rem'}} >
+            <div className={"row"}>
+                <div className={"col-xl-3"}>
+                    <NavBar />
+                </div>
+
+                <div className={"col-xl-7"}>
+                    <Chart2 />
+                </div>
+            </div>
+        </section>
     );
 }
 

@@ -1,4 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import Link from "next/link";
+import { Back, StoplightsFill, CashStack, GearFill, Newspaper } from "react-bootstrap-icons";
 
 const NavBar = () => {
     const [dropDownSelect, setDropDownSelect] = useState('Dashboard')
@@ -24,12 +26,11 @@ const NavBar = () => {
                         {dropDownSelect}
                     </button>
                     <div onClick={onDropDownChange} className = "dropdown-menu" aria-labelledby = "dropdownMenuButton">
-                        <a className = "dropdown-item" href = "/my-dashboard">Dashboard</a>
+                        <Link href={"/my-dashboard"}><a className = "dropdown-item">Dashboard</a></Link>
                         <a className = "dropdown-item" href = "/stores">Stores</a>
                         <a className = "dropdown-item" href = "/orders">Orders</a>
                         <a className = "dropdown-item" href = "/traffic">Traffic</a>
                         <a className = "dropdown-item" href = "/payouts">Payouts</a>
-                        <a className = "dropdown-item" href = "/agency">Agency</a>
                         <a className = "dropdown-item" href = "/settings">Settings</a>
                         <a className = "dropdown-item" href = "/reports">Reports</a>
                     </div>
@@ -40,21 +41,20 @@ const NavBar = () => {
                 <div className = "collapse navbar-collapse flex-column" id = "navbarSupportedContent">
                     <ul className = "navbar-nav mr-auto">
                         <li className = "nav-item active">
-                            <a className = "nav-link" href = "/my-dashboard">Dashboard</a>
+                            <a className = "nav-link" href = "/my-dashboard"><Back />Dashboard</a>
                             <a className = "nav-link" href = "/stores">Stores</a>
                             <a className = "nav-link" href = "/orders">Orders</a>
-                            <a className = "nav-link" href = "/traffic">Traffic</a>
-                            <a className = "nav-link" href = "/payouts">Payouts</a>
-                            <a className = "nav-link" href = "/agency">Agency</a>
-                            <a className = "nav-link" href = "/settings">Settings</a>
-                            <a className = "nav-link" href = "/reports">Reports</a>
+                            <a className = "nav-link" href = "/traffic"><StoplightsFill />Traffic</a>
+                            <a className = "nav-link" href = "/payouts"><CashStack />Payouts</a>
+                            <a className = "nav-link" href = "/settings"><GearFill />Settings</a>
+                            <a className = "nav-link" href = "/reports"><Newspaper />Reports</a>
                             <hr />
                         </li>
                     </ul>
                     <div className={'contact-section'}>
                         <h3>Need Help?</h3>
                         <p>Got Feedback or Suggestions?</p>
-                        <a href={'/contact-us'} type = "button" className = "btn btn-outline-secondary">Contact Us</a>
+                        <a href={'/contact-us'} className = "btn btn-outline-secondary">Contact Us</a>
                     </div>
                 </div>
             </nav>
