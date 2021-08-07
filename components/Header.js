@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const Header = () => {
     return (
@@ -8,7 +9,7 @@ const Header = () => {
                     <div className={"logo col-4 col-md-5"}>
                         <Link href={'/my-dashboard'}>
                             <button style={{backgroundColor: "inherit", border: "none"}}>
-                                <img src={'/icon-square.svg'} width={'45px'} height={'45px'} alt={"goaffpro-logo"}/>
+                                <Image src={'/icon-square.svg'} width={'45px'} height={'45px'} alt={"goaffpro-logo"}/>
                             </button>
                         </Link>
                     </div>

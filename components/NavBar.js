@@ -3,6 +3,7 @@ import {CgShoppingBag, CgFileDocument} from "react-icons/cg";
 import {MdPayment} from "react-icons/md";
 import {FiSettings} from "react-icons/fi";
 import Link from "next/link";
+import Image from "next/image";
 
 const NavBar = () => {
     return (
@@ -12,7 +13,7 @@ const NavBar = () => {
                     <div style={{padding: '1.5rem 0 1rem 2rem'}}>
                         <h3>
                             <span>
-                                <img
+                                <Image
                                     src="/icon-square.svg"
                                     alt="GoAffPro-logo"
                                     className={"goaffpro-logo"}
