@@ -1,15 +1,13 @@
 import Head from "next/head";
-import Header from "../components/Header";
-import DashBoard from "../components/Dashboard";
+import Dashboard from "../components/Dashboard";
 
 const MyDashboard = () => {
-    return (
+    return(
         <>
             <Head>
-                <title>Dashboard</title>
+                <title>My Dashboard</title>
             </Head>
-            <Header />
-            <DashBoard />
+            <Dashboard />
         </>
     )
 }

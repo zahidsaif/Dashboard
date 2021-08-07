@@ -1,20 +1,63 @@
+import React, { useState } from 'react'
 import NavBar from "./NavBar";
-import Chart2 from "./Chart2";
+import User from "./User";
+import Values from "./Values";
+import faker from 'faker';
+import Chart from "./Chart";
+import Results from "./Results";
+import Header from "./Header";
 
-const DashBoard = () => {
+const Dashboard = () => {
+    const [dataFromAPI, setDataFromAPI] = useState(null);
+
+    const data = {
+        countryData: {
+            country: faker.address.country(),
+            countryCode: faker.address.countryCode(),
+            state: faker.address.state(),
+            latitude: faker.address.latitude(),
+            longitude: faker.address.longitude(),
+            timezone: faker.address.timeZone()
+        },
+        financeData: {
+            amount: faker.finance.amount(),
+            currencyName: faker.finance.currencyName(),
+            currencyCode: faker.finance.currencyCode(),
+            currencySymbol: faker.finance.currencySymbol()
+        },
+        userData: {
+            firstName: faker.name.firstName(),
+            lastName: faker.name.lastName(),
+            userName: faker.internet.userName(),
+            email: faker.internet.email(),
+            avatar: faker.image.avatar()
+        },
+        randomData: {
+            number: faker.datatype.number(),
+            float: faker.datatype.float(),
+            date: faker.date.weekday(),
+            month: faker.date.month()
+        }
+    }
+
     return (
-        <section className={"container-fluid"} style={{marginLeft: '-1rem'}} >
+        <section className={"container-fluid"}>
             <div className={"row"}>
-                <div className={"col-xl-3"}>
+                <Header />
+
+                <div className={"col-lg-3 col-xl-3"}>
                     <NavBar />
                 </div>
 
-                <div className={"col-xl-7"}>
-                    <Chart2 />
+                <div className={"col-lg-9 col-xl-9"}>
+                    <User data={data} />
+                    <Values data={data} />
+                    <Chart />
+                    <Results data={data}/>
                 </div>
             </div>
         </section>
-    );
+    )
 }
 
-export default DashBoard
+export default Dashboard

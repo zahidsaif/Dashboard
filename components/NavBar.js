@@ -1,105 +1,112 @@
-import React, { useState } from 'react';
+import {RiDashboardFill, RiShoppingCart2Line, RiTrafficLightLine} from "react-icons/ri";
+import {CgShoppingBag, CgFileDocument} from "react-icons/cg";
+import {MdPayment} from "react-icons/md";
+import {FiSettings} from "react-icons/fi";
 import Link from "next/link";
-import { Back, StoplightsFill, CashStack, GearFill, Newspaper } from "react-bootstrap-icons";
 
 const NavBar = () => {
-    const [dropDownSelect, setDropDownSelect] = useState('Dashboard')
-
-    const onDropDownChange = (e) => {
-        e.preventDefault()
-
-        setDropDownSelect(e.target.innerText)
-    }
-
     return (
-        <section>
-            <nav className={"navbar-style-small"}>
-                <div className = "dropdown">
-                    <button
-                        className = "btn btn-secondary col-11 dropdown-toggle"
-                        type = "button"
-                        id = "dropdownMenuButton"
-                        data-toggle = "dropdown"
-                        aria-haspopup = "true"
-                        aria-expanded = "false"
-                    >
-                        {dropDownSelect}
-                    </button>
-                    <div onClick={onDropDownChange} className = "dropdown-menu" aria-labelledby = "dropdownMenuButton">
-                        <Link href={"/my-dashboard"}><a className = "dropdown-item">Dashboard</a></Link>
-                        <a className = "dropdown-item" href = "/stores">Stores</a>
-                        <a className = "dropdown-item" href = "/orders">Orders</a>
-                        <a className = "dropdown-item" href = "/traffic">Traffic</a>
-                        <a className = "dropdown-item" href = "/payouts">Payouts</a>
-                        <a className = "dropdown-item" href = "/settings">Settings</a>
-                        <a className = "dropdown-item" href = "/reports">Reports</a>
+        <section className={"row"}>
+            <div className={"col"}>
+                <nav className={"sidebar"}>
+                    <div style={{padding: '1.5rem 0 1rem 2rem'}}>
+                        <h3>
+                            <span>
+                                <img
+                                    src="/icon-square.svg"
+                                    alt="GoAffPro-logo"
+                                    className={"goaffpro-logo"}
+                                    width={'50px'}
+                                    height={'50px'}
+                                />
+                            </span>
+                            GoAffPro
+                        </h3>
                     </div>
-                </div>
-            </nav>
 
-            <nav className = "navbar navbar-expand-lg navbar-style-large">
-                <div className = "collapse navbar-collapse flex-column" id = "navbarSupportedContent">
-                    <ul className = "navbar-nav mr-auto">
-                        <li className = "nav-item active">
-                            <a className = "nav-link" href = "/my-dashboard"><Back />Dashboard</a>
-                            <a className = "nav-link" href = "/stores">Stores</a>
-                            <a className = "nav-link" href = "/orders">Orders</a>
-                            <a className = "nav-link" href = "/traffic"><StoplightsFill />Traffic</a>
-                            <a className = "nav-link" href = "/payouts"><CashStack />Payouts</a>
-                            <a className = "nav-link" href = "/settings"><GearFill />Settings</a>
-                            <a className = "nav-link" href = "/reports"><Newspaper />Reports</a>
-                            <hr />
-                        </li>
-                    </ul>
-                    <div className={'contact-section'}>
-                        <h3>Need Help?</h3>
-                        <p>Got Feedback or Suggestions?</p>
-                        <a href={'/contact-us'} className = "btn btn-outline-secondary">Contact Us</a>
+                    <PageRedirect title={"Dashboard"} logo={<RiDashboardFill />} redirectTo={'/my-dashboard'} />
+                    <PageRedirect title={"Stores"} logo={<RiShoppingCart2Line />} redirectTo={'/stores'} />
+                    <PageRedirect title={"Orders"} logo={<CgShoppingBag />} redirectTo={'/orders'} />
+                    <PageRedirect title={"Traffic"} logo={<RiTrafficLightLine />} redirectTo={'/traffic'} />
+                    <PageRedirect title={"Payouts"} logo={<MdPayment />} redirectTo={'/payouts'} />
+                    <PageRedirect title={"Settings"} logo={<FiSettings />} redirectTo={'/settings'} />
+                    <PageRedirect title={"Reports"} logo={<CgFileDocument />} redirectTo={'/reports'} />
+
+                    <br />
+                    <hr />
+
+                    <div className={"contact-us"}>
+                        <div style={{padding: '0 0 1rem 1.7rem'}}>
+                            <h3>Need Help?</h3>
+                            Got Feedback or Suggestions?
+                        </div>
+
+                        <div>
+                            <Link href={'/contact-us'}>
+                                <button className={"btn btn-contact-us"}>Contact Us</button>
+                            </Link>
+                        </div>
                     </div>
-                </div>
-            </nav>
+
+                </nav>
+            </div>
             <style jsx>{`
-                .navbar-style-small {
-                    background-color: #e6e6e6;
-                    width: 100vw;
-                    padding: 1rem 0 1rem 1rem;
+                @media (max-width: 991px) {
+                    .sidebar {
+                        display: none;
+                    }
                 }
-                .btn {
-                    background-color: white;
+                .sidebar {
+                    height: 225vh;
+                    width: 25vw;
                     color: black;
-                    padding: 0.3rem 2rem;
+                    margin-left: -1rem;
+                    background-color: #D7DBDD;
                 }
-                hr {
-                    background-color: black;
-                    padding-right: 13rem;
-                }
-                .nav-link {
-                    margin-left: 1rem;
-                }
-                .navbar-style-large {
-                    background-color: #e6e6e6;
-                    padding-bottom: 100vh;
-                }
-                .contact-section {
-                    display: flex;
-                    flex-direction: column;
+                .goaffpro-logo {
                     margin-right: 2rem;
                 }
-                .btn {
-                    margin-right: 7rem;
+                hr {
+                    background-color: darkgrey;
                 }
-                @media (max-width: 992px) {
-                    .navbar-style-large {
-                        display: none;
-                    }
-                }
-                @media (min-width: 992px) {
-                    .navbar-style-small {
-                        display: none;
-                    }
+                .btn-contact-us {
+                    margin-left: 2rem;
+                    border: 2px solid black;
+                    border-radius: 5px;
                 }
             `}</style>
         </section>
+    )
+}
+
+const PageRedirect = ({ title, logo, redirectTo }) => {
+    return (
+        <div>
+            <Link href={redirectTo}>
+                <button className={"btn-style"}>
+                    <div className={"logo"}>
+                        {logo}
+                    </div>
+
+                    <div style={{paddingTop: '1rem'}}>
+                        <h5>{title}</h5>
+                    </div>
+                </button>
+            </Link>
+
+            <style jsx>{`
+                .btn-style {
+                    display: flex;
+                    flex-direction: row;
+                    background-color: inherit;
+                    border: none;
+                }
+                .logo {
+                    padding: 0 1rem 0 2rem;
+                    font-size: xx-large;
+                }
+            `}</style>
+        </div>
     )
 }
 

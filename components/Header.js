@@ -1,47 +1,35 @@
-import { PersonCircle, Search, BellFill, BoxArrowRight } from "react-bootstrap-icons";
+import Link from "next/link";
 
 const Header = () => {
     return (
-        <header className={"container-fluid header-style"}>
-            <div className={"row"}>
-                <div className={"brand col-4"}>
-                    <h4>GOAFFPRO</h4>
-                </div>
+        <header className={"row"}>
+            <div className={"col"}>
+                <div className={"header"}>
+                    <div className={"logo col-4 col-md-5"}>
+                        <Link href={'/my-dashboard'}>
+                            <button style={{backgroundColor: "inherit", border: "none"}}>
+                                <img src={'/icon-square.svg'} width={'45px'} height={'45px'} alt={"goaffpro-logo"}/>
+                            </button>
+                        </Link>
+                    </div>
 
-                <section className={"user col-5 col-sm-4 col-md-3 col-lg-3 col-xl-2"}>
-                    <button className={"btn btn-1"}><PersonCircle /></button>
-                    <button className={"btn btn-2"}><Search /></button>
-                    <button className={"btn btn-3"}><BellFill /></button>
-                </section>
-
-                <div className={"logout col-3 col-md-4"}>
-                    <button className={"btn btn-logout col-md-12"}><BoxArrowRight /></button>
+                    <div className={"title"} style={{textAlign: "center", marginLeft: '1rem'}}>
+                        <h3>GoAffPro</h3>
+                    </div>
                 </div>
             </div>
             <style jsx>{`
-                .header-style {
-                    background-color: #444;
-                    padding: 2rem 0 2.5rem 1rem;
-                }
-                .brand {
-                    padding-left: 1rem;
-                    margin-top: 1rem;
-                    color: white;
-                }
-                .btn-logout {
-                    color: white;
-                    font-size: x-large;
-                }
-                .user {
+                .header {
+                    background-color: #D7DBDD;
                     display: flex;
-                    padding: 0 1rem;
-                    background-color: white;
-                    border-radius: 25px;
                     color: black;
-
+                    width: 100vw;
+                    padding: 1rem;
                 }
-                .btn-1 {
-                    margin-right: 4rem;
+                @media (min-width: 992px) {
+                    .header {
+                        display: none;
+                    }
                 }
             `}</style>
         </header>

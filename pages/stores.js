@@ -1,15 +1,13 @@
 import Head from "next/head";
-import Header from "../components/Header";
-import NavBar from "../components/NavBar";
+import Dashboard from "../components/Dashboard";
 
 const Stores = () => {
-    return (
+    return(
         <>
             <Head>
                 <title>Stores</title>
             </Head>
-            <Header />
-            <NavBar />
+            <Dashboard />
         </>
     )
 }

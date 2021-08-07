@@ -1,83 +1,109 @@
-import React from 'react'
-import Values from "./Values";
-import { Line } from "react-chartjs-2";
-import { CurrencyDollar, FileCheckFill } from "react-bootstrap-icons";
+import {BiDollarCircle} from "react-icons/bi";
+import {GiClick} from "react-icons/gi";
+import {VictoryChart, VictoryStack, VictoryGroup, VictoryArea, VictoryPortal, VictoryScatter} from 'victory'
 
 const Chart = () => {
+    const ChartData = () => {
+        return (
+            <VictoryChart scale = {{x: "time"}} width = {600} height = {400}>
+                <VictoryStack colorScale = "warm">
+                    <VictoryGroup
+                        data = {[
+                            {x: new Date(1986, 1, 1), y: 2},
+                            {x: new Date(1996, 1, 1), y: 3},
+                            {x: new Date(2006, 1, 1), y: 5},
+                            {x: new Date(2016, 1, 1), y: 4}
+                        ]}
+                    >
+                        <VictoryArea/>
+                        <VictoryPortal>
+                            <VictoryScatter
+                                style = {{data: {fill: "black"}}}
+                            />
+                        </VictoryPortal>
+                    </VictoryGroup>
+                    <VictoryGroup
+                        data = {[
+                            {x: new Date(1986, 1, 1), y: 4},
+                            {x: new Date(1996, 1, 1), y: 3},
+                            {x: new Date(2006, 1, 1), y: 2},
+                            {x: new Date(2016, 1, 1), y: 5}
+                        ]}
+                    >
+                        <VictoryArea/>
+                        <VictoryPortal>
+                            <VictoryScatter
+                                style = {{data: {fill: "black"}}}
+                            />
+                        </VictoryPortal>
+                    </VictoryGroup>
+                    <VictoryGroup
+                        data = {[
+                            {x: new Date(1986, 1, 1), y: 3},
+                            {x: new Date(1996, 1, 1), y: 1},
+                            {x: new Date(2006, 1, 1), y: 4},
+                            {x: new Date(2016, 1, 1), y: 2}
+                        ]}
+                    >
+                        <VictoryArea/>
+                        <VictoryPortal>
+                            <VictoryScatter
+                                style = {{data: {fill: "black"}}}
+                            />
+                        </VictoryPortal>
+                    </VictoryGroup>
+                </VictoryStack>
+            </VictoryChart>
+        )
+    }
+
     return (
-        <section className={'chart-style col-12'}>
-            <div className={"title-style"}>
-                <h2>Dashboard</h2>
-                <input className={"text-box"} type={"text"} />
-            </div>
-            <div className={'text-items'}>
-                <button type = "button" className = "btn btn-1">Earning<CurrencyDollar /></button>
-                <button type = "button" className = "btn btn-2">Clicks<FileCheckFill /></button>
-                <p>Earnings are approximate and shown in USD</p>
-            </div>
-            <div className = "card col-lg-9 col-xl-9">
-                <div className = "card-body">
-                    <Line data={ChartData} />
+        <section className={"row"}>
+            <div className={"col"}>
+                <div className={"card mt-4"} style={{borderRadius: '6px'}}>
+                    <div className={"card-body"}>
+                        <div className={"row"}>
+                            <div className={"col-3 col-lg-2"}>
+                                <button className={"btn"}>Earnings <BiDollarCircle /></button>
+                            </div>
+
+                            <div className={"col-3 col-lg-2"}>
+                                <button className={"btn"}>Clicks <GiClick /></button>
+                            </div>
+
+                            <div className={"col-6 col-lg-8 mt-2"} style={{textAlign: "right", fontSize: "small"}}>
+                                Earnings are approximate and shown in USD
+                            </div>
+                        </div>
+
+                        <div className={"row mt-3 mb-4 date-input"}>
+                            <div className={"col col-md-6"}>
+                                <input
+                                    type={"date"}
+                                    style={{width: '100%', borderRadius: '5px'}}
+                                />
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div className={"row"}>
+                            <div className={"col"}>
+                                <ChartData />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <Values />
             <style jsx>{`
-                .title-style {
-                    margin-top: 0.5rem;   
-                }
-                .text-box {
-                    margin-bottom: 1rem;
-                    border-radius: 5px;
-                    background-color: inherit;
-                    border-color: white;
-                    width: 93vw;
-                }
-                .text-items {
-                    display: flex;
-                }
-                .btn {
-                    padding: 0 0.5rem 0 0.5rem;
-                    margin-bottom: 1rem;
-                }
-                .btn-2 {
-                    margin-right: 1rem;
-                }
-                p {
-                    font-size: small;
-                    padding-left: 4rem;
-                    text-align: right;
-                    padding-top: 0.25rem;
-                }
-                @media (min-width: 992px) {
-                    .text-box {
-                        width: 68vw;
-                    }
-                    .card {
-                        width: 90vw
-                    }
-                }
-                @media (min-width: 1200px) {
-                    .text-box {
-                        width: 75vw;
-                    }
-                    .card {
-                        width: 100vw
+                @media (min-width: 768px) {
+                    .date-input {
+                        justify-content: center;
                     }
                 }
             `}</style>
         </section>
-    );
+    )
 }
-
-const ChartData = {
-    labels: 'ABCDEFG',
-    datasets: [{
-        label: 'Chart',
-        data: [65, 59, 80, 81, 56, 55, 40],
-        fill: false,
-        borderColor: 'rgb(75, 192, 192)',
-        tension: 0.1
-    }]
-};
 
 export default Chart

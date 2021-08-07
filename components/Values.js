@@ -1,95 +1,84 @@
-import React from 'react';
+import React, { useState } from 'react';
+import {HiOutlineCursorClick} from "react-icons/hi";
+import {FaBoxOpen} from "react-icons/fa";
+import {SiConvertio} from "react-icons/si";
+import {GiMoneyStack} from "react-icons/gi";
 
-const Values = () => {
+const Values = ({ data }) => {
+    const [clicks, setClicks] = useState(0);
+    const [orders, setOrders] = useState(0);
+    const [conversionRate, setConversionRate] = useState(0);
+    const [earnings, setEarnings] = useState(0)
+
     return (
-        <section style={{display: "flex", flexDirection: "column"}}>
-            <div className={"cards-container col-12"}>
-                <div className = "card card-single card-1 col-lg-2 col-xl-2">
-                    <div className = "card-body">
-                        <h4>3</h4>
-                        <p>Clicks</p>
+        <section className={"row"}>
+            <div className={"col values"}>
+                <div className={"card mt-2 mr-auto col-md-6 col-lg-3 col-xl-3"} style={{borderRadius: '6px'}}>
+                    <div className={"card-body"}>
+                        <div className={"row"}>
+                            <div className={"col-7"} style={{fontSize: "xxx-large", paddingLeft: '2rem'}}>
+                                <HiOutlineCursorClick />
+                            </div>
+
+                            <div className={"col"} style={{margin: '0.7rem 1rem 0 0', textAlign: "right"}}>
+                                <h4>{data.randomData.number}</h4>
+                                <p>Clicks</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div className = "card card-single card-2 col-lg-2 col-xl-2">
-                    <div className = "card-body">
-                        <h4>0</h4>
-                        <p>Orders</p>
+                <div className={"card mt-2 mr-auto ml-auto col-md-6 col-lg-3 col-xl-3"} style={{borderRadius: '6px'}}>
+                    <div className={"card-body"}>
+                        <div className={"row"}>
+                            <div className={"col-7"} style={{fontSize: "xxx-large", paddingLeft: '2rem'}}>
+                                <FaBoxOpen />
+                            </div>
+
+                            <div className={"col"} style={{margin: '0.7rem 1rem 0 0', textAlign: "right"}}>
+                                <h4>{data.randomData.number}</h4>
+                                <p>Orders</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div className = "card card-single card-3 col-lg-2 col-xl-2">
-                    <div className = "card-body">
-                        <h4>0%</h4>
-                        <p>Conversion</p>
+                <div className={"card mt-2 mr-auto ml-auto col-md-6 col-lg-3 col-xl-3"} style={{borderRadius: '6px'}}>
+                    <div className={"card-body"}>
+                        <div className={"row"}>
+                            <div className={"col-7"} style={{fontSize: "xxx-large", paddingLeft: '2rem'}}>
+                                <SiConvertio />
+                            </div>
+
+                            <div className={"col"} style={{margin: '0.7rem 1rem 0 0', textAlign: "right"}}>
+                                <h4>{`${data.randomData.float} %`}</h4>
+                                <p>Conversion</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div className = "card card-single card-4 col-lg-2 col-xl-2">
-                    <div className = "card-body">
-                        <h4>$0.00</h4>
-                        <p>Earnings</p>
+                <div className={"card mt-2 ml-auto col-md-6 col-lg-3 col-xl-3"} style={{borderRadius: '6px'}}>
+                    <div className={"card-body"}>
+                        <div className={"row"}>
+                            <div className={"col-7"} style={{fontSize: "xxx-large", paddingLeft: '2rem'}}>
+                                <GiMoneyStack />
+                            </div>
+
+                            <div className={"col"} style={{margin: '0.7rem 1rem 0 0', textAlign: "right"}}>
+                                <h4>{`${data.financeData.currencySymbol} ${data.financeData.amount}`}</h4>
+                                <p>Earnings</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div className={"detail-card col-xl-5"}>
-                <div className = "card detail-card-1 col-lg-4 col-xl-10">
-                    <div className = "card-body">
-                        <h5>Recent Orders</h5>
-                        <ul>
-                            <li className = "list-group-item">An item</li>
-                            <li className = "list-group-item">A second item</li>
-                            <li className = "list-group-item">A third item</li>
-                            <li className = "list-group-item">A fourth item</li>
-                            <li className = "list-group-item">And a fifth one</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div className = "card detail-card-2 col-lg-4 col-xl-10">
-                    <div className = "card-body">
-                        <h5>Recent Payouts</h5>
-                        <ul>
-                            <li className = "list-group-item">An item</li>
-                            <li className = "list-group-item">A second item</li>
-                            <li className = "list-group-item">A third item</li>
-                            <li className = "list-group-item">A fourth item</li>
-                            <li className = "list-group-item">And a fifth one</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
             <style jsx>{`
-                .card-single {
-                    margin: 1rem 1rem 0 0;
-                }
-                .detail-card {
-                    margin-top: 2rem;
-                }
-                ul {
-                    padding-left: 0;
-                    margin: 0 -1rem;
-                }
-                .cards-container {
-                    display: inherit;
-                    flex-direction: inherit;
-                }
-                @media (min-width: 992px) {
-                    .cards-container {
+                @media (min-width: 768px) {
+                    .values {
+                        display: flex;
                         flex-direction: row;
-                    }
-                    .card {
-                        margin-right: 1.7rem;
-                    }
-                    .detail-card {
-                        display: inherit;
-                    }
-                }
-                @media (min-width: 1200px) {
-                    .detail-card {
-                        display: inherit;
+                        flex-wrap: wrap;
                     }
                 }
             `}</style>

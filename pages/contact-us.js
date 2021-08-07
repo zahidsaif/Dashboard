@@ -1,8 +1,12 @@
-const ContactUs = () => {
-    return (
-        <div>
+import Head from "next/head";
 
-        </div>
+const ContactUs = () => {
+    return(
+        <>
+            <Head>
+                <title>Contact Us</title>
+            </Head>
+        </>
     )
 }
 
