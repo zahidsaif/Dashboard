@@ -10,19 +10,19 @@ const NavBar = () => {
         <section className={"row"}>
             <div className={"col"}>
                 <nav className={"sidebar"}>
-                    <div style={{padding: '1.5rem 0 1rem 2rem'}}>
-                        <h3>
-                            <span>
-                                <Image
-                                    src="/icon-square.svg"
-                                    alt="GoAffPro-logo"
-                                    className={"goaffpro-logo"}
-                                    width={'50px'}
-                                    height={'50px'}
-                                />
-                            </span>
-                            GoAffPro
-                        </h3>
+                    <div style={{padding: '1.5rem 0 1rem 2rem', display: "flex"}}>
+                        <div className={"main-logo"} style={{marginRight: '2rem'}}>
+                            <Image
+                                src="/icon-square.svg"
+                                alt="GoAffPro-logo"
+                                width={'50px'}
+                                height={'50px'}
+                            />
+                        </div>
+
+                        <div>
+                            <h3>GoAffPro</h3>
+                        </div>
                     </div>
 
                     <PageRedirect title={"Dashboard"} logo={<RiDashboardFill />} redirectTo={'/my-dashboard'} />
@@ -63,9 +63,6 @@ const NavBar = () => {
                     color: black;
                     margin-left: -1rem;
                     background-color: #D7DBDD;
-                }
-                .goaffpro-logo {
-                    margin-right: 2rem;
                 }
                 hr {
                     background-color: darkgrey;
