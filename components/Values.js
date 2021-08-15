@@ -11,78 +11,44 @@ const Values = ({ data }) => {
     const [earnings, setEarnings] = useState(0)
 
     return (
-        <section className={"row"}>
-            <div className={"col values"}>
-                <div className={"card mt-2 mr-auto col-md-6 col-lg-3 col-xl-3"} style={{borderRadius: '6px'}}>
-                    <div className={"card-body"}>
-                        <div className={"row"}>
-                            <div className={"col-7"} style={{fontSize: "xxx-large", paddingLeft: '2rem'}}>
-                                <HiOutlineCursorClick />
-                            </div>
-
-                            <div className={"col"} style={{margin: '0.7rem 1rem 0 0', textAlign: "right"}}>
-                                <h4>{data.randomData.number}</h4>
-                                <p>Clicks</p>
-                            </div>
-                        </div>
-                    </div>
+        <section>
+            <div className={"row"}>
+                <div className={"col-sm-6 col-md-3"}>
+                    <SingleValue logo={<HiOutlineCursorClick />} title={"Clicks"} value={data.randomData.number} />
                 </div>
 
-                <div className={"card mt-2 mr-auto ml-auto col-md-6 col-lg-3 col-xl-3"} style={{borderRadius: '6px'}}>
-                    <div className={"card-body"}>
-                        <div className={"row"}>
-                            <div className={"col-7"} style={{fontSize: "xxx-large", paddingLeft: '2rem'}}>
-                                <FaBoxOpen />
-                            </div>
-
-                            <div className={"col"} style={{margin: '0.7rem 1rem 0 0', textAlign: "right"}}>
-                                <h4>{data.randomData.number}</h4>
-                                <p>Orders</p>
-                            </div>
-                        </div>
-                    </div>
+                <div className={"col-sm-6 col-md-3"}>
+                    <SingleValue logo={<FaBoxOpen />} title={"Orders"} value={data.randomData.number} />
                 </div>
 
-                <div className={"card mt-2 mr-auto ml-auto col-md-6 col-lg-3 col-xl-3"} style={{borderRadius: '6px'}}>
-                    <div className={"card-body"}>
-                        <div className={"row"}>
-                            <div className={"col-7"} style={{fontSize: "xxx-large", paddingLeft: '2rem'}}>
-                                <SiConvertio />
-                            </div>
-
-                            <div className={"col"} style={{margin: '0.7rem 1rem 0 0', textAlign: "right"}}>
-                                <h4>{`${data.randomData.float} %`}</h4>
-                                <p>Conversion</p>
-                            </div>
-                        </div>
-                    </div>
+                <div className={"col-sm-6 col-md-3"}>
+                    <SingleValue logo={<SiConvertio />} title={"Conversion"} value={`${data.randomData.float} %`} />
                 </div>
 
-                <div className={"card mt-2 ml-auto col-md-6 col-lg-3 col-xl-3"} style={{borderRadius: '6px'}}>
-                    <div className={"card-body"}>
-                        <div className={"row"}>
-                            <div className={"col-7"} style={{fontSize: "xxx-large", paddingLeft: '2rem'}}>
-                                <GiMoneyStack />
-                            </div>
+                <div className={"col-sm-6 col-md-3"}>
+                    <SingleValue logo={<GiMoneyStack />} title={"Earnings"} value={`${data.financeData.currencySymbol}${data.financeData.amount}`} />
+                </div>
+            </div>
+        </section>
+    )
+}
 
-                            <div className={"col"} style={{margin: '0.7rem 1rem 0 0', textAlign: "right"}}>
-                                <h4>{`${data.financeData.currencySymbol} ${data.financeData.amount}`}</h4>
-                                <p>Earnings</p>
-                            </div>
-                        </div>
+const SingleValue = ({ logo, title, value }) => {
+    return (
+        <div className={"card mt-2"} style={{borderRadius: '6px', border: '2px solid black'}}>
+            <div className={"card-body"}>
+                <div className={"row"}>
+                    <div className={"col col-sm-12 col-md-12"} style={{fontSize: "xxx-large", paddingLeft: '2rem'}}>
+                        {logo}
+                    </div>
+
+                    <div className={"col"} style={{textAlign: "right"}}>
+                        <h4>{value}</h4>
+                        <p>{title}</p>
                     </div>
                 </div>
             </div>
-            <style jsx>{`
-                @media (min-width: 768px) {
-                    .values {
-                        display: flex;
-                        flex-direction: row;
-                        flex-wrap: wrap;
-                    }
-                }
-            `}</style>
-        </section>
+        </div>
     )
 }
 

@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import NavBar from "./NavBar";
-import User from "./User";
 import Values from "./Values";
 import faker from 'faker';
 import Chart from "./Chart";
 import Results from "./Results";
-import Header from "./Header";
+import NavBarTop from "./NavBarTop";
+import NavBarSide from "./NavBarSide";
 
 const Dashboard = () => {
     const [dataFromAPI, setDataFromAPI] = useState(null);
@@ -43,14 +42,13 @@ const Dashboard = () => {
     return (
         <section className={"container-fluid"}>
             <div className={"row"}>
-                <Header />
+                <NavBarTop data={data} />
 
                 <div className={"col-lg-3 col-xl-3"}>
-                    <NavBar />
+                    <NavBarSide data={data} />
                 </div>
 
                 <div className={"col-lg-9 col-xl-9"}>
-                    <User data={data} />
                     <Values data={data} />
                     <Chart />
                     <Results data={data}/>

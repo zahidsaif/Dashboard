@@ -1,35 +1,23 @@
 const Results = ({ data }) => {
     return (
-        <section className={"row"}>
-            <div className={"col"}>
-                <div className={"all-cards"}>
-                    <div className={"row"}>
-                        <div className={"col-md-6 col-lg-6 col-xl-6"}>
-                            <ResultCard
-                                title={"Recent Orders"}
-                                date={`${data.randomData.date}, ${data.randomData.month}`}
-                                amount={`${data.financeData.currencySymbol} ${data.financeData.amount}`}
-                            />
-                        </div>
+        <section>
+            <div className={"row"}>
+                <div className={"col-md-6 col-lg-6 col-xl-6"}>
+                    <ResultCard
+                        title={"Recent Orders"}
+                        date={`${data.randomData.date}, ${data.randomData.month}`}
+                        amount={`${data.financeData.currencySymbol} ${data.financeData.amount}`}
+                    />
+                </div>
 
-                        <div className={"col-md-6 col-lg-6 col-xl-6"}>
-                            <ResultCard
-                                title={"Recent Payouts"}
-                                date={`${data.randomData.date}, ${data.randomData.month}`}
-                                amount={`${data.financeData.currencySymbol} ${data.financeData.amount}`}
-                            />
-                        </div>
-                    </div>
+                <div className={"col-md-6 col-lg-6 col-xl-6"}>
+                    <ResultCard
+                        title={"Recent Payouts"}
+                        date={`${data.randomData.date}, ${data.randomData.month}`}
+                        amount={`${data.financeData.currencySymbol} ${data.financeData.amount}`}
+                    />
                 </div>
             </div>
-            <style jsx>{`
-                @media (min-width: 768px) {
-                    .all-cards {
-                        display: flex;
-                        flex-direction: column;
-                    }
-                }
-            `}</style>
         </section>
     )
 }
@@ -43,8 +31,9 @@ const ResultCard = ({ title, date, amount }) => {
                         <h4>{title}</h4>
                     </div>
                 </div>
-                <hr />
+                <hr style={{backgroundColor: "black"}}/>
 
+                <div>
                 <RowData date={date} amount={amount} />
                 <hr />
 
@@ -58,11 +47,12 @@ const ResultCard = ({ title, date, amount }) => {
                 <hr />
 
                 <RowData date={date} amount={amount} />
+                </div>
             </div>
             <style jsx>{`
                 hr {
-                    margin-left: -1rem;
-                    margin-right: -1rem;
+                    margin-left: -1.1rem;
+                    margin-right: -1.1rem;
                 }
             `}</style>
         </div>

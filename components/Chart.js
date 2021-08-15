@@ -1,6 +1,9 @@
 import {BiDollarCircle} from "react-icons/bi";
 import {GiClick} from "react-icons/gi";
+import React, {useState} from 'react'
 import {VictoryChart, VictoryStack, VictoryGroup, VictoryArea, VictoryPortal, VictoryScatter} from 'victory'
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css"
 
 const Chart = () => {
     const ChartData = () => {
@@ -60,7 +63,7 @@ const Chart = () => {
     return (
         <section className={"row"}>
             <div className={"col"}>
-                <div className={"card mt-4"} style={{borderRadius: '6px'}}>
+                <div className={"card mt-4"} style={{borderRadius: '6px', border: '2px solid black'}}>
                     <div className={"card-body"}>
                         <div className={"row"}>
                             <div className={"col-3 col-lg-2"}>
@@ -76,12 +79,13 @@ const Chart = () => {
                             </div>
                         </div>
 
-                        <div className={"row mt-3 mb-4 date-input"}>
-                            <div className={"col col-md-6"}>
-                                <input
-                                    type={"date"}
-                                    style={{width: '100%', borderRadius: '5px'}}
-                                />
+                        <div className={"row mt-5 mb-4"} style={{justifyContent: "center"}}>
+                            <div className={"col-4 col-sm-3 col-md-2 mt-1"}>
+                                Select Date
+                            </div>
+
+                            <div className={""}>
+                                <DateCapture />
                             </div>
                         </div>
 
@@ -95,14 +99,22 @@ const Chart = () => {
                     </div>
                 </div>
             </div>
-            <style jsx>{`
-                @media (min-width: 768px) {
-                    .date-input {
-                        justify-content: center;
-                    }
-                }
-            `}</style>
         </section>
+    )
+}
+
+const DateCapture = () => {
+    const [dateRange, setDateRange] = useState([null, null]);
+    const [startDate, endDate] = dateRange;
+
+    return (
+        <DatePicker
+            selectsRange={true}
+            startDate={startDate}
+            endDate={endDate}
+            onChange={(update) => setDateRange(update)}
+            withPortal
+        />
     )
 }
 

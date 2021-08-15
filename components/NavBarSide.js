@@ -1,28 +1,33 @@
+import Link from "next/link";
 import {RiDashboardFill, RiShoppingCart2Line, RiTrafficLightLine} from "react-icons/ri";
-import {CgShoppingBag, CgFileDocument} from "react-icons/cg";
+import {CgFileDocument, CgShoppingBag} from "react-icons/cg";
 import {MdPayment} from "react-icons/md";
 import {FiSettings} from "react-icons/fi";
-import Link from "next/link";
-import Image from "next/image";
 
-const NavBar = () => {
+
+const NavBarSide = ({ data }) => {
     return (
         <section className={"row"}>
             <div className={"col"}>
-                <nav className={"sidebar"}>
-                    <div style={{padding: '1.5rem 0 1rem 2rem', display: "flex"}}>
-                        <div className={"main-logo"} style={{marginRight: '2rem'}}>
-                            <Image
-                                src="/icon-square.svg"
-                                alt="GoAffPro-logo"
-                                width={'50px'}
-                                height={'50px'}
-                            />
-                        </div>
+                <nav className={"navbar-side-style"}>
+                    <div style={{backgroundColor: "#1d1f2f"}}>
+                        <button className={"btn btn-user-image"} style={{margin: '0 0 0 1rem', display: "flex"}} onClick={() => window.location.href = '/my-dashboard'}>
+                            <div>
+                                <input
+                                    className={'user-image'}
+                                    type={"image"}
+                                    src={data.userData.avatar}
+                                    width={'50px'}
+                                    height={'50px'}
+                                />
+                            </div>
 
-                        <div>
-                            <h3>GoAffPro</h3>
-                        </div>
+                            <div style={{margin: '1.25rem 0 0 1rem', color: "white", fontSize: "large"}}>
+                                <strong>
+                                    {data.userData.firstName} {data.userData.lastName}
+                                </strong>
+                            </div>
+                        </button>
                     </div>
 
                     <PageRedirect title={"Dashboard"} logo={<RiDashboardFill />} redirectTo={'/my-dashboard'} />
@@ -48,21 +53,21 @@ const NavBar = () => {
                             </Link>
                         </div>
                     </div>
-
                 </nav>
             </div>
             <style jsx>{`
                 @media (max-width: 991px) {
-                    .sidebar {
+                    .navbar-side-style {
                         display: none;
                     }
                 }
-                .sidebar {
-                    height: 225vh;
+                .navbar-side-style {
+                    height: 210vh;
                     width: 25vw;
                     color: black;
                     margin-left: -1rem;
-                    background-color: #D7DBDD;
+                    margin-top: -0.43rem;
+                    background-color: #e3e6e8;
                 }
                 hr {
                     background-color: darkgrey;
@@ -71,6 +76,14 @@ const NavBar = () => {
                     margin-left: 2rem;
                     border: 2px solid black;
                     border-radius: 5px;
+                }
+                .user-image {
+                    border-radius: 129px;
+                    margin-top: 0.5rem;
+                }
+                .btn-contact-us:hover {
+                    background-color: #1d1f2f;
+                    color: white;
                 }
             `}</style>
         </section>
@@ -91,7 +104,6 @@ const PageRedirect = ({ title, logo, redirectTo }) => {
                     </div>
                 </button>
             </Link>
-
             <style jsx>{`
                 .btn-style {
                     display: flex;
@@ -103,9 +115,14 @@ const PageRedirect = ({ title, logo, redirectTo }) => {
                     padding: 0 1rem 0 2rem;
                     font-size: xx-large;
                 }
+                .btn-style:hover {
+                    background-color: #1d1f2f;
+                    color: white;
+                    width: 100%;
+                }
             `}</style>
         </div>
     )
 }
 
-export default NavBar
+export default NavBarSide
